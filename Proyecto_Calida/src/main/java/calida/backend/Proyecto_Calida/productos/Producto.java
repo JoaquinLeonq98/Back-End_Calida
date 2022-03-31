@@ -3,7 +3,7 @@ package calida.backend.Proyecto_Calida.productos;
 public class Producto {
 	private String nombre;
 	private String descripcion;
-	private String url_imagen; // TODO definir tipo de variable
+	private String URL_imagen; // TODO definir tipo de variable
 	private double precio;
 	private int inventario;
 	private int id;
@@ -13,7 +13,7 @@ public class Producto {
 	public Producto(String descripcion, String url_imagen, String nombre, double precio, int inventario) {
 		super();
 		this.descripcion = descripcion;
-		this.url_imagen = url_imagen;
+		URL_imagen = url_imagen;
 		this.nombre = nombre;
 		total++;
 		this.id = total;
@@ -38,10 +38,10 @@ public class Producto {
 	}//setDescripcion
 
 	public String getUrl_imagen() {
-		return url_imagen;
+		return URL_imagen;
 	}//getUrl_imagen
-	public void setUrl_imagen(String url_imagen) {
-		this.url_imagen = url_imagen;
+	public void setURL_imagen(String url_imagen) {
+		URL_imagen = url_imagen;
 	}//setUrl_imagen
 
 	public double getPrecio() {
@@ -61,16 +61,11 @@ public class Producto {
 	public int getId() {
 		return id;
 	}//getId
-	
+
 	@Override
 	public String toString() {
-		return "Producto [nombre=" + nombre + ", descripcion=" + descripcion + ", url_imagen=" + url_imagen
+		return "Producto [nombre=" + nombre + ", descripcion=" + descripcion + ", URL_imagen=" + URL_imagen
 				+ ", precio=" + precio + ", inventario=" + inventario + ", id=" + id + "]";
-	}//toString()
+	}//toString
 	
-	
-	
-	
-	
-
 }//class Producto

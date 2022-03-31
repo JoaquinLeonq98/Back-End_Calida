@@ -1,30 +1,23 @@
 package calida.backend.Proyecto_Calida.productos;
-
 import java.util.ArrayList;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path="/api/productos/")
-@CrossOrigin(origins="*")
-
+@RequestMapping (path="/api/productos/")
 public class ProductosController {
-	private final ProductosService productosServices;
-	
-	@Autowired
+
+	private final ProductosService productosService;
 	public ProductosController(ProductosService productosService) {
-		this.productosServices = productosService;
-		
-	} // CONSTRUCTOR
+		this.productosService = productosService;
+	}//constructor para instanciar
 	
 	@GetMapping
-	public ArrayList <Producto> getProductos(){
-		return productosService.getProductos(); 
+	public ArrayList<Producto> getProductos(){
 		
-	} // esto es getProductos
+		
+		 return lista;
+	}//getProductos
 
 } // Class ProductosController
