@@ -21,6 +21,11 @@ public class Producto {
 		this.precio = precio;
 		this.inventario = inventario;
 	}//constructor producto
+	
+	public Producto() {
+		total++;
+		this.id = total;
+	}//Constructor vacio
 
 	//Inicio Getters y Setters
 	public String getNombre() {
