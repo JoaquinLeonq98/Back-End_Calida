@@ -8,6 +8,6 @@ public class ProyectoCalidaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoCalidaApplication.class, args);
-	}
+	}//main
 
-}
+}//class ProyectoCalidaApplication

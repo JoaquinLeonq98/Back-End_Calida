@@ -2,74 +2,75 @@ package calida.backend.Proyecto_Calida.productos;
 
 public class Producto {
 	private String nombre;
-	private double precio;
 	private String descripcion;
-	private String imagen; // TODO definir tipo de variable
+	private String url_imagen; // TODO definir tipo de variable
+	private double precio;
 	private int inventario;
-	private long id;
-	private static long total = 0;
-	public Producto(String nombre, double precio, String descripcion, String imagen, int inventario) { 
+	private int id;
+	private static int total = 0;
+	
+	//Inicio constructor Producto
+	public Producto(String descripcion, String url_imagen, String nombre, double precio, int inventario) {
 		super();
-		this.nombre = nombre;
-		this.precio = precio;
 		this.descripcion = descripcion;
-		this.imagen = imagen;
-		this.inventario = inventario;
-		total ++;
+		this.url_imagen = url_imagen;
+		this.nombre = nombre;
+		total++;
 		this.id = total;
-	} // CONSTRUCTOR
-	
-	public Producto() {
-		total ++;
-		this.id=total;
-	} // CONSTRUCTOR VACIO
-	
-	
+		
+		this.precio = precio;
+		this.inventario = inventario;
+	}//constructor producto
+
+	//Inicio Getters y Setters
 	public String getNombre() {
 		return nombre;
-	}
+	}//getNombre
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	public double getPrecio() {
-		return precio;
-	}
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
+	}//setNombre
+
 	public String getDescripcion() {
 		return descripcion;
-	}
+	}//getDescripcion
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-	public String getImagen() {
-		return imagen;
-	}
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
+	}//setDescripcion
+
+	public String getUrl_imagen() {
+		return url_imagen;
+	}//getUrl_imagen
+	public void setUrl_imagen(String url_imagen) {
+		this.url_imagen = url_imagen;
+	}//setUrl_imagen
+
+	public double getPrecio() {
+		return precio;
+	}//getPrecio
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}//setPrecio
+
 	public int getInventario() {
 		return inventario;
-	}
+	}//getInventario
 	public void setInventario(int inventario) {
 		this.inventario = inventario;
-	}
-	public long getId() {
+	}//setInventario
+
+	public int getId() {
 		return id;
-	} // getters & setters
-
-
+	}//getId
+	
 	@Override
 	public String toString() {
-		return "Producto [nombre=" + nombre + ", precio=" + precio + ", descripcion=" + descripcion + ", imagen="
-				+ imagen + ", inventario=" + inventario + ", id=" + id + "]";
-	} //toString()
-	
+		return "Producto [nombre=" + nombre + ", descripcion=" + descripcion + ", url_imagen=" + url_imagen
+				+ ", precio=" + precio + ", inventario=" + inventario + ", id=" + id + "]";
+	}//toString()
 	
 	
 	
 	
 	
 
-}// clase producto
+}//class Producto
