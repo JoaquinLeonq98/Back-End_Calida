@@ -1,29 +1,43 @@
 package calida.projectEcommerce.model;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="producto")
 public class Producto {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="idproducto", unique=true, nullable=false)//nombre del id en la tabla mysql
+	private Long id;
 	private String nombre;
 	private String descripcion;
 	private String URL_imagen; 
 	private double precio;
 	private int inventario;
-	private int id;
-	private static int total = 0;
 	
-	//Inicio constructor Producto
-	public Producto(String descripcion, String url_imagen, String nombre, double precio, int inventario) {
-		this.descripcion = descripcion;
-		URL_imagen = url_imagen;
+	public Producto(Long id, String nombre, String descripcion, String uRL_imagen, double precio, int inventario) {
+		super();
+		this.id = id;
 		this.nombre = nombre;
-		total++;	
-		this.id = total;
+		this.descripcion = descripcion;
+		URL_imagen = uRL_imagen;
 		this.precio = precio;
 		this.inventario = inventario;
-	}//constructor producto
+	}//Constructor Producto
 	
 	public Producto() {
-		total++;
-		this.id = total;
-	}//Constructor vacio
+	}//ConstructorProducto vacio para add
+
+	public Long getId() {
+		return id;
+	}//getId
+	//public void setId(Long id) {
+	//	this.id = id;
+	//}//setId
 
 	//Inicio Getters y Setters
 	public String getNombre() {
@@ -40,12 +54,12 @@ public class Producto {
 		this.descripcion = descripcion;
 	}//setDescripcion
 
-	public String getUrl_imagen() {
+	public String getURL_imagen() {
 		return URL_imagen;
-	}//getUrl_imagen
-	public void setURL_imagen(String url_imagen) {
-		URL_imagen = url_imagen;
-	}//setUrl_imagen
+	}//getURL_imagen
+	public void setURL_imagen(String uRL_imagen) {
+		URL_imagen = uRL_imagen;
+	}//setURL_imagen
 
 	public double getPrecio() {
 		return precio;
@@ -61,14 +75,21 @@ public class Producto {
 		this.inventario = inventario;
 	}//setInventario
 
-	public int getId() {
-		return id;
-	}//getId
-
 	@Override
 	public String toString() {
-		return "Producto [nombre=" + nombre + ", descripcion=" + descripcion + ", URL_imagen=" + URL_imagen
-				+ ", precio=" + precio + ", inventario=" + inventario + ", id=" + id + "]";
+		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", URL_imagen="
+				+ URL_imagen + ", precio=" + precio + ", inventario=" + inventario + "]";
 	}//toString
+	
+	
+	
 
+
+	
+	
+	
+
+
+
+	
 }//class Producto
