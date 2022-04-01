@@ -1,9 +1,11 @@
-package calida.backend.Proyecto_Calida.productos;
-import java.util.ArrayList;
+package calida.projectEcommerce.service;
 import org.springframework.stereotype.Service;
+import calida.projectEcommerce.model.Producto;
+
+import java.util.ArrayList;
 
 @Service
-public class ProductosService {
+public class ProductoService {
 	public final ArrayList<Producto> lista = new ArrayList<Producto>();
 	public ProductosService() {
 		lista.add(
@@ -78,4 +80,6 @@ public class ProductosService {
 		return tmpProducto;
 	}//updateProducto
 	
-}// class ProductosService
+	
+
+}//class ProductoService

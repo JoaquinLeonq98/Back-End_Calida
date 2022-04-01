@@ -1,9 +1,9 @@
-package calida.backend.Proyecto_Calida.productos;
+package calida.projectEcommerce.model;
 
 public class Producto {
 	private String nombre;
 	private String descripcion;
-	private String URL_imagen; // TODO definir tipo de variable
+	private String URL_imagen; 
 	private double precio;
 	private int inventario;
 	private int id;
@@ -11,13 +11,11 @@ public class Producto {
 	
 	//Inicio constructor Producto
 	public Producto(String descripcion, String url_imagen, String nombre, double precio, int inventario) {
-		super();
 		this.descripcion = descripcion;
 		URL_imagen = url_imagen;
 		this.nombre = nombre;
-		total++;
+		total++;	
 		this.id = total;
-		
 		this.precio = precio;
 		this.inventario = inventario;
 	}//constructor producto
@@ -72,5 +70,5 @@ public class Producto {
 		return "Producto [nombre=" + nombre + ", descripcion=" + descripcion + ", URL_imagen=" + URL_imagen
 				+ ", precio=" + precio + ", inventario=" + inventario + ", id=" + id + "]";
 	}//toString
-	
+
 }//class Producto
