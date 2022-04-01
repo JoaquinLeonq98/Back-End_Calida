@@ -82,13 +82,6 @@ public class Producto {
 	}//toString
 	
 	
-	
-
-
-	
-	
-	
-
 
 
 	

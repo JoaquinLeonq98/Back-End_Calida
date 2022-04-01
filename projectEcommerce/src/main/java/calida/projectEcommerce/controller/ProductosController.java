@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import calida.projectEcommerce.model.Producto;
@@ -29,7 +30,7 @@ public class ProductosController {
 	public Producto getProducto (@PathVariable("prodId") Long id) {
 		return productoService.getProducto(id);
 	}//getProducto
-	/*
+	
 	@DeleteMapping (path="{prodId}")
 	public Producto deleteProducto(@PathVariable("prodId") Long id) {
 		return productoService.deleteProducto(id);
@@ -39,6 +40,5 @@ public class ProductosController {
 	public Producto addProducto(@RequestBody Producto producto) {
 	return productoService.addProducto(producto);
 	}//addProducto
-	*/
 	
 }//class ProductosController
