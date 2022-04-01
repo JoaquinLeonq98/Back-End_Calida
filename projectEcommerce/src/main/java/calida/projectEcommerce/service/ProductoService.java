@@ -46,6 +46,21 @@ public class ProductoService {
 		}//else 
 		return tmpProducto;
 	}//addProducto
+
+	public Producto updateProducto(Long prodId, String nombre, String descripcion, String uRL_imagen, double precio) {
+		Producto tmpProducto = null;
+		for (Producto producto : productosRepository) {
+			if (producto.getId()==prodId) {
+				if (nombre!=null)producto.setNombre(nombre);
+				if (descripcion!=null)producto.setDescripcion(descripcion);
+				if (uRL_imagen!=null)producto.setURL_imagen(uRL_imagen);
+				if(precio>0)producto.setPrecio(precio);
+				tmpProducto = producto;
+				break;
+				}//if getId
+		}//foreach
+		return tmpProducto;
+	}//updateProducto
 	
 	
 
