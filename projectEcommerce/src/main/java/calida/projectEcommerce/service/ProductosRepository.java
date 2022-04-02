@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import calida.projectEcommerce.model.Producto;
 
 public interface ProductosRepository extends JpaRepository<Producto, Long> {
-	@Query("SELECT p FROM Producto p WHERE p.nombre=?1")	 //JPQL usado para consultas
+	@Query("SELECT product FROM Producto product WHERE product.nombre=?1")	 //JPQL usado para consultas
 	Optional<Producto> findByNombre(String nombre);
 	//Si optional ecuentra el producto lo regresa. Si no, no pasa nada es opcional
 
