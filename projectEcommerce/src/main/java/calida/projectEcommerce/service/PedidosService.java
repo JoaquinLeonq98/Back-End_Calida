@@ -1,10 +1,13 @@
 package calida.projectEcommerce.service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import calida.projectEcommerce.model.Pedido;
 
@@ -37,8 +40,33 @@ public class PedidosService {
 
 		public void addPedido(Pedido pedido) {
 			Optional<Pedido> pedidoByDate = 
-					pedidosRepository.findByFecha(fecha.getFecha());		
+					pedidosRepository.findByDate(pedido.getFecha());
+			if(pedidoByDate.isPresent()) {
+				throw new IllegalStateException("El pedido realizado en:  "
+						+ pedido.getFecha() + "Ya existe");
+				}else {
+					pedidosRepository.save(pedido);
+				}//else
 		}//PostPedido
+
+		public Pedido updatePedido(Long id, Date fecha, Boolean status_entrega, Boolean status_pago) {
+			Pedido tmpProducto = null;
+			if(pedidosRepository.existsById(id)) {
+				tmpProducto = pedidosRepository.findById(id).get();
+				if (fecha!=null) tmpProducto.setFecha(fecha);
+				if (status_entrega!= null) tmpProducto.setStatus_entrega(status_entrega);
+				if (status_pago!=null) tmpProducto.setStatus_pago(status_pago);
+					pedidosRepository.save(tmpProducto);
+			}else {
+				System.out.println("No existe el pedido con el id " + id);
+			}//else //if
+			
+			return tmpProducto;
+			
+		}//updatePedido
+
+
+		
 		
 		
 }//ClassPediosService

@@ -1,5 +1,6 @@
 package calida.projectEcommerce.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 
@@ -8,10 +9,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import calida.projectEcommerce.model.ChangeStatusDeEntrega;
 import calida.projectEcommerce.model.Pedido;
 import calida.projectEcommerce.service.PedidosService;
 
@@ -46,6 +50,14 @@ public class PedidoController {
 	public void addPedido(@RequestBody Pedido pedido) {
 		pedidosService.addPedido(pedido);
 	}//addProducto
+	
+	@PutMapping(path="{prodId}")
+	public Pedido updatePedido(@PathVariable("prodId")long id, 
+			@RequestParam(required = false) Date fecha,
+			@RequestParam(required = false) Boolean status_entrega,
+			@RequestParam(required = false) Boolean status_pago) {
+			return pedidosService.updatePedido(id, fecha, status_entrega, status_pago);
+	}//updateProducto
 	
 	
 }//CLassPedidoControler
