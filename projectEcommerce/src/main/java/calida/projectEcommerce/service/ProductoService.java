@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import calida.projectEcommerce.model.Producto;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class ProductoService {
@@ -13,53 +15,55 @@ public class ProductoService {
 	
 	@Autowired
 	public ProductoService(ProductosRepository productosRepository) {
+		super();
 		this.productosRepository = productosRepository;
-	}//constructor ProductoService
+	}//constructor ProductoService - Instanciar solo una vez
 
 	public List<Producto> getProductos(){
 		return productosRepository.findAll();	
-	}//getProductos para encontrar todos
+	}//getProductos - para encontrar todos
 	
 	public Producto getProducto(Long id) {
 		return productosRepository.findById(id).orElseThrow(
 				()-> new IllegalStateException("El producto con el id: "+id+" no existe.")	);
-	}//getProducto para encontrar solo uno, en caso de no encontrarlo enviar mensaje
+	}//getProducto - para encontrar solo uno, en caso de no encontrarlo enviar mensaje
 
 	public Producto deleteProducto(Long id) {
-		Producto tmpProducto = null;
+		Producto productoTemporal = null;
 		if(productosRepository.existsById(id)) {
-			tmpProducto = productosRepository.findById(id).get();
+			productoTemporal = productosRepository.findById(id).get();
 			productosRepository.deleteById(id);
 		}//if si exite lo borra
-		return tmpProducto;
+		return productoTemporal;
 	}//deleteProducto
 
 	public Producto addProducto(Producto producto) {
-		Producto tmpProducto = null;
+		Producto productoTemporal = null;
 		Optional<Producto> prodByName=productosRepository.findByNombre(producto.getNombre());
 		if(prodByName.isPresent()) {
-			throw new IllegalStateException("El Producto con el nombre:"
-					+ " " + producto.getNombre() + ", ya existe."); 	
+			throw new IllegalStateException("El producto con el nombre: " 
+											+ producto.getNombre() + ", ya existe."); 	 	
 		} else {
 			productosRepository.save(producto);
-			tmpProducto = producto;
+			productoTemporal = producto;
 		}//else 
-		return tmpProducto;
+		return productoTemporal;
 	}//addProducto
 
-	public Producto updateProducto(Long prodId, String nombre, String descripcion, String uRL_imagen, double precio) {
-		Producto tmpProducto = null;
-		for (Producto producto : productosRepository) {
-			if (producto.getId()==prodId) {
-				if (nombre!=null)producto.setNombre(nombre);
-				if (descripcion!=null)producto.setDescripcion(descripcion);
-				if (uRL_imagen!=null)producto.setURL_imagen(uRL_imagen);
-				if(precio>0)producto.setPrecio(precio);
-				tmpProducto = producto;
-				break;
-				}//if getId
-		}//foreach
-		return tmpProducto;
+	public Producto updateProducto(Long id, String nombre, String descripcion, String imagen, Double precio) {
+		Producto productoTemporal = null;
+		if(productosRepository.existsById(id)) {
+			productoTemporal = productosRepository.findById(id).get();
+			if (nombre!=null) productoTemporal.setNombre(nombre);
+			if (descripcion!=null) productoTemporal.setDescripcion(descripcion);
+			if (imagen!=null) productoTemporal.setImagen(imagen);
+			if (precio!=null && precio.doubleValue()>0)  productoTemporal.setPrecio(precio);
+			productosRepository.save(productoTemporal);
+		}//if si exite lo trae y los if (segundo anidado) los agregan
+		else {
+			System.out.println("No exite el producto con el id: " +id);
+		}//Else
+		return productoTemporal;
 	}//updateProducto
 	
 	
