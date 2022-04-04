@@ -5,20 +5,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import calida.projectEcommerce.model.Login;
-import calida.projectEcommerce.service.LoginService;
+import calida.projectEcommerce.model.Cliente;
+import calida.projectEcommerce.service.ClienteService;
 
 @RestController
 @RequestMapping(path="api/login/")
 public class LoginController {
-	private final LoginService loginService;
+	private final ClienteService clienteService;
 	@Autowired
-	public LoginController(LoginService loginService) {
-		this.loginService = loginService;
+	public LoginController(ClienteService clienteService) {
+		this.clienteService = clienteService;
 	}//constructor LoginController
 	
-	@PostMapping
-	public Login addLogin(@RequestBody Login login) {
-		return loginService.addLogin(login);
-	}//addLogin
+	@PostMapping//se pone en post para que no se escriba en el URL
+	public String login(@RequestBody Cliente cliente) {
+		return clienteService.validateCliente(cliente);
+	}//login
 }//class LoginController
