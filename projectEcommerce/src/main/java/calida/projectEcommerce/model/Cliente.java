@@ -16,18 +16,18 @@ public class Cliente {
 	private String nombre;
 	private String apellido;
 	private String correo;
-	private String contraseña;
+	private String contrasena;
 	
-	public Cliente(Long id, String nombre, String apellido, String correo, String contraseña) {
+	public Cliente(Long id, String nombre, String apellido, String correo, String contrasena) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
-		this.contraseña = contraseña;
+		this.contrasena = contrasena;
 	}//constructor Cliente
 	
 	public Cliente() {
-	}//constructor vacío para add
+	}//constructor vacï¿½o para add
 
 	public String getNombre() {
 		return nombre;
@@ -50,11 +50,11 @@ public class Cliente {
 		this.correo = correo;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasena() {
+		return contrasena;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	public Long getId() {
@@ -65,7 +65,7 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo
-				+ ", contraseña=" + contraseña + "]";
+				+ ", contraseï¿½a=" + contrasena + "]";
 	}//toString
 	
 	
