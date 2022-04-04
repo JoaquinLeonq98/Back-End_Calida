@@ -19,19 +19,20 @@ public class ProductosController {
 	
 	private final ProductoService productoService;
 	@Autowired
-	public ProductosController(ProductoService prodService) {
-		this.productoService = prodService;
+	public ProductosController(ProductoService productoService) {
+		
+		this.productoService = productoService;
 	}//Constructor ProductosController
 	 
 	@GetMapping
 	public List<Producto> getProductos(){
 		return productoService.getProductos();
-	}//getProductos
+	}//getProductos - Todos
 	
 	@GetMapping (path="{prodId}")
 	public Producto getProducto (@PathVariable("prodId") Long id) {
 		return productoService.getProducto(id);
-	}//getProducto
+	}//getProducto - Solo uno
 	
 	@DeleteMapping (path="{prodId}")
 	public Producto deleteProducto(@PathVariable("prodId") Long id) {
@@ -40,17 +41,18 @@ public class ProductosController {
 	
 	@PostMapping
 	public Producto addProducto(@RequestBody Producto producto) {
-	return productoService.addProducto(producto);
+		return productoService.addProducto(producto);
 	}//addProducto
 	
 	@PutMapping(path="{prodId}")
-	public Producto updateProducto(@PathVariable("prodId") Long prodId, 
+	public Producto updateProducto(
+		@PathVariable("prodId") Long prodId, 
 		@RequestParam (required=false) String nombre, 
 		@RequestParam (required=false) String descripcion, 
-		@RequestParam (required=false) String URL_imagen, 
+		@RequestParam (required=false) String imagen, 
 		@RequestParam (required=false) double precio,
 		@RequestParam (required=false) int inventario) {
-		return productoService.updateProducto(prodId,nombre,descripcion,URL_imagen, precio);
+		return productoService.updateProducto(prodId,nombre,descripcion,imagen,precio);
 	}//updateProducto
 	
 }//class ProductosController
