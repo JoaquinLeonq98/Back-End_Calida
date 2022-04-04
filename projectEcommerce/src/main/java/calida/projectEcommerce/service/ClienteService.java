@@ -27,12 +27,12 @@ public class ClienteService {
 	}//addCliente
 
 	public String validateCliente(Cliente cliente) {
-		String res="El usuario o contraseña son incorrectos";
+		String res="El usuario o contraseï¿½a son incorrectos";
 		Optional<Cliente> userByEmail=clienteRepository.findByCorreo(cliente.getCorreo());
 		if (userByEmail.isPresent()) {
 			Cliente c = userByEmail.get();
-			if (c.getContraseña().equals(cliente.getContraseña())){
-				res="Usuario y contraseña validados";
+			if (c.getContrasena().equals(cliente.getContrasena())){
+				res="Usuario y contraseï¿½a validados";
 			}//if password
 		}//if isPresent
 		return res;
