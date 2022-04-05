@@ -1,11 +1,8 @@
 package calida.projectEcommerce.service;
-
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import calida.projectEcommerce.model.Mensaje;
 
 @Service
@@ -32,16 +29,18 @@ public class MensajesService {
 			mensajesRepository.deleteById(id);
 		}//if si exite lo borra
 	}//deleteMensaje
-	/*
-	public void addMensaje(Mensaje mensaje) {		
-		Optional<Mensaje> prodByName=mensajesRepository.findByNombre(mensaje.getNombre());
-		if(prodByName.isPresent()) {
-			throw new IllegalStateException("El usuarios con el nombre: " + mensaje.getNombre() + 
-					", ya existe."); 	
+
+	public Mensaje addMensaje(Mensaje mensaje) {
+		Mensaje mensajeTemporal = null;
+		Optional<Mensaje> mensajeByName=mensajesRepository.findByCorreo(mensaje.getCorreo());
+		if(mensajeByName.isPresent()) {
+			throw new IllegalStateException("El producto con el nombre: " 
+											+ mensaje.getCorreo() + ", ya existe."); 	 	
 		} else {
 			mensajesRepository.save(mensaje);
-	
+			mensajeTemporal = mensaje;
 		}//else 
+		return mensajeTemporal;
 	}//addMensaje
-	*/
+	
 }//class MensajesService

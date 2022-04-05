@@ -37,10 +37,10 @@ public class MensajesController {
 		public void deleteMensaje(@PathVariable("prodId") Long id) {
 			mensajesService.deleteMensaje(id);
 		}//deleteMensaje
-		/*
+		
 		@PostMapping
-		public void addMensaje(@RequestBody Mensaje mensaje) {
-			mensajesService.addMensaje(mensaje);
+		public Mensaje addMensaje(@RequestBody Mensaje mensaje) {
+			return mensajesService.addMensaje(mensaje);
 		}//addMensaje
-		*/
+		
 }//class MensajesController
