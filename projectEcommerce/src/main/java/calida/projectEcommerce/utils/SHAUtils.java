@@ -25,13 +25,6 @@ public class SHAUtils {
 	return res;
 	}//createHash
 	
-	
-	/*De la contraseña normal a la cifrada*/
-	// public static void main(String[] args) {
-	// 	System.out.println(createHash("hola15123"));
-	// }
-	
-	
 	/*De la contraseña cifrada a la normal*/
 	public static boolean verifyHash(String original, String hash){
 		String res = createHash(original);
