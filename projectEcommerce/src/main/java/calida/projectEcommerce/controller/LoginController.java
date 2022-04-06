@@ -9,7 +9,7 @@ import calida.projectEcommerce.model.Cliente;
 import calida.projectEcommerce.service.ClienteService;
 
 @RestController
-@RequestMapping(path="api/login/")
+@RequestMapping(path="/api/login/")
 public class LoginController {
 	private final ClienteService clienteService;
 	@Autowired
