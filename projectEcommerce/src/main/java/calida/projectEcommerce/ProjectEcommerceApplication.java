@@ -20,7 +20,7 @@ public class ProjectEcommerceApplication {
 		FilterRegistrationBean<JwtFilter> registrationBean = 
 				new FilterRegistrationBean<JwtFilter>(); //constructor
 		registrationBean.setFilter(new JwtFilter());
-		registrationBean.addUrlPatterns("/api/cliente/*");
+		registrationBean.addUrlPatterns("/api/usuarios/*");
 		//registrationBean.addUrlPatterns("/api/productos/*");
 		return registrationBean;
 	}//jwtFilter 
