@@ -1,6 +1,7 @@
 package calida.projectEcommerce.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,8 @@ import calida.projectEcommerce.model.Producto;
 import calida.projectEcommerce.service.ProductoService;
 
 @RestController
-@RequestMapping(path="/api/productos/") 
+@RequestMapping(path="/api/productos/")
+@CrossOrigin("*")
 public class ProductosController {
 	
 	private final ProductoService productoService;
@@ -44,15 +46,5 @@ public class ProductosController {
 		return productoService.addProducto(producto);
 	}//addProducto
 	
-	@PutMapping(path="{prodId}")
-	public Producto updateProducto(
-		@PathVariable("prodId") Long prodId, 
-		@RequestParam (required=false) String nombre, 
-		@RequestParam (required=false) String descripcion, 
-		@RequestParam (required=false) String imagen, 
-		@RequestParam (required=false) double precio,
-		@RequestParam (required=false) int inventario) {
-		return productoService.updateProducto(prodId,nombre,descripcion,imagen,precio);
-	}//updateProducto
 	
 }//class ProductosController
