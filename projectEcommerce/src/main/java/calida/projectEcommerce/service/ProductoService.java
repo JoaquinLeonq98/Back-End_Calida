@@ -4,6 +4,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import calida.projectEcommerce.model.ChangeProducto;
 import calida.projectEcommerce.model.Producto;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,23 +51,6 @@ public class ProductoService {
 		}//else 
 		return productoTemporal;
 	}//addProducto
-
-	public Producto updateProducto(Long id, String nombre, String descripcion, String imagen, Double precio) {
-		Producto productoTemporal = null;
-		if(productosRepository.existsById(id)) {
-			productoTemporal = productosRepository.findById(id).get();
-			if (nombre!=null) productoTemporal.setNombre(nombre);
-			if (descripcion!=null) productoTemporal.setDescripcion(descripcion);
-			if (imagen!=null) productoTemporal.setImagen(imagen);
-			if (precio!=null && precio.doubleValue()>0)  productoTemporal.setPrecio(precio);
-			productosRepository.save(productoTemporal);
-		}//if si exite lo trae y los if (segundo anidado) los agregan
-		else {
-			System.out.println("No exite el producto con el id: " +id);
-		}//Else
-		return productoTemporal;
-	}//updateProducto
-	
 	
 
 }//class ProductoService
